@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Soumya Banerjee personal blog and notes." />
+  <title>Soumya Banerjee | Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/portfolio.css" />
+</head>
+<body class="plain-page">
+  <main class="blog-wrap">
+    <div class="container">
+      <header class="blog-header reveal visible">
+        <a class="btn btn-ghost back-link" href="index.html">Back to Portfolio</a>
+        <p class="eyebrow">Soumya Notes</p>
+        <h1>Blog Space</h1>
+        <p class="lead">Version-controlled blog for GitHub Pages. Posts are stored as files in this repository.</p>
+      </header>
+
+      <section class="blog-controls reveal visible">
+        <div class="control-box">
+          <label for="search-posts">Search posts</label>
+          <input id="search-posts" type="search" placeholder="Search title, excerpt, tag..." />
+        </div>
+        <div class="control-box">
+          <label for="tag-filter">Filter by tag</label>
+          <select id="tag-filter">
+            <option value="all">All tags</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="blog-layout reveal visible">
+        <article class="blog-guide-card">
+          <h2>How To Publish</h2>
+          <ol class="blog-steps">
+            <li>Create a new file in <code>posts/</code> (copy an existing post file).</li>
+            <li>Add metadata entry in <code>data/blog-posts.json</code>.</li>
+            <li>Commit and push. GitHub Pages deploys automatically.</li>
+          </ol>
+          <p class="muted">No local storage dependency. Every post is tracked in Git history.</p>
+        </article>
+
+        <article class="blog-posts-card">
+          <div class="blog-list-head">
+            <h2>Published Posts</h2>
+            <p id="posts-count">0 posts</p>
+          </div>
+          <div id="posts-list" class="posts-list"></div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script src="assets/js/blog.js"></script>
+</body>
+</html>
