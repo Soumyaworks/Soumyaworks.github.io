@@ -380,6 +380,48 @@ img {
   font-size: 0.95rem;
 }
 
+.publication-card {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.publication-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.publication-links a {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(8, 25, 42, 0.78);
+  padding: 0.32rem 0.68rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.publication-links span {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.publication-links a:hover {
+  border-color: rgba(255, 184, 77, 0.45);
+}
+
+.publication-card .publication-authors,
+.publication-card .publication-link-text {
+  color: var(--text);
+}
+
 .section-note {
   margin: 0 0 0.9rem;
   color: var(--muted);
