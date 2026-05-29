@@ -1,18 +1,18 @@
 [
   {
-    "title": "How I Approach DSA Practice",
-    "excerpt": "The weekly structure I use to stay consistent and improve pattern recognition.",
-    "url": "posts/how-i-approach-dsa-practice.html",
-    "date": "2026-05-24",
-    "readTime": "4 min read",
-    "tags": ["dsa", "learning", "problem-solving"]
+    "title": "Competitive Programming Roadmap",
+    "excerpt": "A practical beginner-to-advanced path through language fluency, DSA, contest platforms, and upsolving.",
+    "url": "posts/competitive-programming-roadmap.html",
+    "date": "2026-05-30",
+    "readTime": "5 min read",
+    "tags": ["competitive-programming", "dsa", "learning", "contests"]
   },
   {
-    "title": "Why I Build End-to-End Projects",
-    "excerpt": "Complete builds teach tradeoffs better than isolated coding exercises.",
-    "url": "posts/why-i-build-end-to-end-projects.html",
-    "date": "2026-05-23",
-    "readTime": "3 min read",
-    "tags": ["fullstack", "projects", "engineering"]
+    "title": "MLIR: Lowering Code Without Losing the Plot",
+    "excerpt": "A crisp study note on progressive lowering, dialects, SSA, and the Operation-Region-Block-Value model.",
+    "url": "posts/mlir-progressive-lowering-notes.html",
+    "date": "2026-05-30",
+    "readTime": "5 min read",
+    "tags": ["mlir", "compilers", "llvm", "paper-notes"]
   }
 ]

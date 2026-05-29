@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MLIR: Lowering Code Without Losing the Plot | Soumya Banerjee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/portfolio.css" />
+</head>
+<body class="plain-page">
+  <main class="resume-wrap">
+    <div class="container">
+      <a class="btn btn-ghost back-link" href="../blog.html">Back to Blog</a>
+      <article class="resume-card reveal visible blog-post-page">
+        <p class="eyebrow">MLIR • Compilers • Paper Notes</p>
+        <h1>MLIR: Lowering Code Without Losing the Plot</h1>
+        <p class="muted">May 30, 2026 • 5 min read</p>
+
+        <section class="resume-section">
+          <h2>1. Why MLIR Exists</h2>
+          <p>LLVM IR works very well for low-level optimization, but by the time code reaches it, many source-level details are already gone. For modern workloads, especially ML and hardware-specific compilation, we often need optimizations at several abstraction levels instead of one final IR.</p>
+          <figure class="blog-figure">
+            <figcaption>Traditional compiler shape</figcaption>
+            <pre><code>Source Code
+    |
+    v
+Compiler Frontend
+    |
+    v
+Low-Level IR
+    |
+    v
+Optimizations
+    |
+    v
+Machine Code</code></pre>
+          </figure>
+        </section>
+
+        <section class="resume-section">
+          <h2>2. The Core Idea</h2>
+          <p>MLIR is built around progressive lowering: move from source-level concepts to machine-level code through multiple intermediate representations. A PyTorch program, for example, can move through Torch, Linalg, Affine, and LLVM dialects before becoming machine code.</p>
+          <figure class="blog-figure">
+            <figcaption>Progressive lowering</figcaption>
+            <pre><code>High-level program meaning
+    |
+    v
+IR #1  - domain operations
+    |
+    v
+IR #2  - structured loops / tensors
+    |
+    v
+IR #3  - memory and control flow
+    |
+    v
+IR #4  - LLVM-level operations
+    |
+    v
+Machine Code</code></pre>
+          </figure>
+          <figure class="blog-figure">
+            <figcaption>Example ML pipeline</figcaption>
+            <pre><code>PyTorch
+  |
+  v
+Torch Dialect
+  |
+  v
+Linalg Dialect
+  |
+  v
+Affine Dialect
+  |
+  v
+LLVM Dialect
+  |
+  v
+Machine Code</code></pre>
+          </figure>
+        </section>
+
+        <section class="resume-section">
+          <h2>3. Dialects as Layers</h2>
+          <p>A dialect captures one level of meaning. Higher dialects can preserve tensors, shapes, and domain operations, while lower dialects expose loops, memory, and hardware details. This makes the compiler pipeline flexible instead of forcing every frontend into one fixed IR too early.</p>
+        </section>
+
+        <section class="resume-section">
+          <h2>4. SSA Refresher</h2>
+          <p>MLIR uses SSA, where each value is assigned once. This makes dependencies clear and helps optimizations like constant propagation, dead code elimination, and data-flow analysis. Branches merge values using phi-like semantics, so the chosen value depends on the control-flow path.</p>
+          <figure class="blog-figure">
+            <figcaption>SSA intuition</figcaption>
+            <pre><code>Normal code             SSA-style view
+
+x = 5                   x1 = 5
+x = x + 1               x2 = x1 + 1
+x = x * 2               x3 = x2 * 2</code></pre>
+          </figure>
+        </section>
+
+        <section class="resume-section">
+          <h2>5. The Four Building Blocks</h2>
+          <ul>
+            <li><strong>Operation:</strong> the basic executable unit, with inputs, outputs, attributes, and optional nested regions.</li>
+            <li><strong>Region:</strong> a container owned by an operation. This is one of MLIR's key differences from LLVM IR.</li>
+            <li><strong>Block:</strong> a sequence of operations, similar to a compiler basic block.</li>
+            <li><strong>Value:</strong> an SSA value produced by operations or passed as a block argument.</li>
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2>6. Mental Model</h2>
+          <p>An MLIR operation can take values as inputs, produce values as outputs, carry attributes as metadata, and own regions. Those regions contain blocks, and blocks contain more operations. This recursive structure lets MLIR represent both low-level instructions and high-level program structure in one infrastructure.</p>
+          <figure class="blog-figure">
+            <figcaption>Operation anatomy</figcaption>
+            <pre><code>Operation
+  |
+  +-- Inputs
+  +-- Outputs
+  +-- Attributes
+  |
+  +-- Regions
+        |
+        +-- Blocks
+              |
+              +-- Operations</code></pre>
+          </figure>
+        </section>
+
+        <section class="resume-section">
+          <h2>7. What I Want to Explore Next</h2>
+          <ul>
+            <li>How dialect conversion works in practice.</li>
+            <li>How affine and linalg dialects enable optimization.</li>
+            <li>How MLIR compares with a traditional LLVM-only pipeline on a real example.</li>
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2>References</h2>
+          <ol class="blog-reference-list">
+            <li><a href="https://arxiv.org/abs/2002.11054" target="_blank" rel="noopener noreferrer">MLIR: A Compiler Infrastructure for the End of Moore's Law</a></li>
+          </ol>
+        </section>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

@@ -768,14 +768,13 @@ img {
   font-size: 1.15rem;
 }
 
-.blog-steps {
-  margin: 0;
-  padding-left: 1.1rem;
-  color: var(--muted);
+.blog-guide-card p {
+  margin: 0 0 0.75rem;
+  color: #d6e7f7;
 }
 
-.blog-steps li {
-  margin-bottom: 0.5rem;
+.blog-guide-card p:last-child {
+  margin-bottom: 0;
 }
 
 .post-title-link {
@@ -798,4 +797,41 @@ img {
 .blog-post-page h1 {
   margin: 0.25rem 0 0.5rem;
   font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.blog-figure {
+  margin: 0.9rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(5, 16, 28, 0.46);
+  overflow: hidden;
+}
+
+.blog-figure figcaption {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.blog-figure pre {
+  margin: 0;
+  padding: 0.85rem;
+  overflow-x: auto;
+  color: var(--muted);
+  font: 0.86rem/1.55 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  white-space: pre;
+}
+
+.blog-reference-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.blog-reference-list a {
+  color: #ffd598;
+  font-weight: 700;
 }
